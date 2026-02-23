@@ -1,6 +1,6 @@
-function Dashboard(){
+function Navbar(){
     return(
-        <div className="dashboard">
+        <div className="navbar">
             <ul>
                 <li>
                     <a href="/todo">My Tasks</a>
@@ -15,4 +15,4 @@ function Dashboard(){
         </div>
     )
 }
-export default Dashboard;
+export default Navbar;

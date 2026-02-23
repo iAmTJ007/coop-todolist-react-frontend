@@ -1,8 +1,12 @@
 import { useState,useEffect } from "react";
 import API from "../api/axios";
-function Todo(){
+import Navbar from "../Elements/Navbar";
+import Todo from "../Elements/Todo";
+import DatePickerField from "../Elements/DatePickerField";
+function Home(){
     const [todos,setTodos]=useState([]);
     const [loading,setLoading]=useState(false);
+    const [date,setDate]=useState(new Date()); //yyyy-mm-dd
     //fetch todos list
     const fetchTodos=async()=>{
         try {
@@ -19,21 +23,17 @@ function Todo(){
         fetchTodos();
     },[]);
     return(
-        <div>
-            <ul className="todolist">
+        <div className="home">
+            <Navbar/>  
+            <DatePickerField value={date} onChange={(date)=>setDate(date)}/>
+            <ul>
                 {todos.map((todo)=>{
                     return(
-                        <li key={todo.taskId}>
-                            <h1>{todo.title}</h1>
-                            <p>{todo.description}</p>
-                            <h2>Status: {todo.status}</h2>
-                            <h2>Priority: {todo.priority}</h2>
-                            <h2>Due Date: {todo.dueDate}</h2>
-                        </li>
+                        todo.createDate===date.toISOString().split("T")[0]?<Todo todo={todo}/>:null
                     )
                 })}
-            </ul>
+            </ul>   
         </div>
     )
 }
-export default Todo;
+export default Home;
