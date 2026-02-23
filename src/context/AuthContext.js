@@ -14,7 +14,8 @@ export function AuthProvider({children}){
         setUser(data.username);
     };
     const register=async(data)=>{
-        await API.post("/auth/register",data);
+        const res= await API.post("/auth/register",data);
+        if(!res)throw new Error("Couldnt Register");
     };
     const logout=()=>{
         localStorage.clear();

@@ -16,8 +16,8 @@ function Login() {
       alert("Login Failed");
     }
   };
-
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <input
         placeholder="Username"
@@ -30,6 +30,11 @@ function Login() {
       />
       <button>Login</button>
     </form>
+    <div>
+      <p>New user, register <a href="./register">here</a></p>
+    </div>
+    </>
+    
   );
 }
 
