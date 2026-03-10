@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "./Button";
 
 function AddTaskModal({setShowModal,fetchTodos}){
-    const [form,setForm]=useState({title:"",description:"",priority:"",dueDate:""});
+    const [form,setForm]=useState({title:"",description:"",priority:"LOW",dueDate:""});
 
     const handleAddTask=async(e)=>{
         e.preventDefault();
@@ -25,7 +25,11 @@ function AddTaskModal({setShowModal,fetchTodos}){
             <form onSubmit={handleAddTask}>
                 <input placeholder="title" onChange={(e)=>setForm({...form,title:e.target.value})}/>
                 <input placeholder="description" onChange={(e)=>setForm({...form,description:e.target.value})}/>
-                <input placeholder="priority" onChange={(e)=>setForm({...form,priority:e.target.value})}/>
+                <select placeholder="priority" onChange={(e)=>setForm({...form,priority:e.target.value})}>
+                    <option value="LOW">Low Priority</option>
+                    <option value="MEDIUM">Medium Priority</option>
+                    <option value="HIGH">High Priority</option>
+                </select>
                 <input placeholder="duedate" type="date" onChange={(e)=>setForm({...form,dueDate:e.target.value})}/>
                 <Button text={"Add Task"}/>
             </form>
@@ -33,6 +37,5 @@ function AddTaskModal({setShowModal,fetchTodos}){
             
         </div>
     )
-
 }
 export default AddTaskModal;

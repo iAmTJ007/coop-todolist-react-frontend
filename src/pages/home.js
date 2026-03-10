@@ -48,8 +48,8 @@ function Home(){
                         <ul>
                             {todos.map((todo)=>
                                 todo.createDate === selectedDate
-                                    ? <Todo key={todo.id} todo={todo}/>
-                                    : "null"
+                                    ? <Todo todo={todo} fetchTodos={fetchTodos}/>
+                                    : ""
                             )}
                         </ul>
                     )
