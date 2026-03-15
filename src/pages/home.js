@@ -9,8 +9,8 @@ function Home(){
     const [todos,setTodos]=useState([]);
     const [loading,setLoading]=useState(false);
     const [date,setDate]=useState(new Date());
-    const [showModal,setShowModal]=useState(false);
-
+    const [showModal,setShowModal]=useState("none");
+    
     const selectedDate = date.toLocaleDateString("en-CA");
 
     const fetchTodos=async()=>{
@@ -48,19 +48,20 @@ function Home(){
                         <ul>
                             {todos.map((todo)=>
                                 todo.createDate === selectedDate
-                                    ? <Todo todo={todo} fetchTodos={fetchTodos}/>
+                                    ?showModal!=="edit"?(<Todo todo={todo} fetchTodos={fetchTodos} setShowModal={setShowModal}/>)
+                                        :<AddTaskModal setShowModal={setShowModal} fetchTodos={fetchTodos} task={todo}/>
                                     : ""
                             )}
                         </ul>
                     )
                 }
                 {
-                    showModal ? (
+                    showModal==="add" ? (
                         <AddTaskModal
                             setShowModal={setShowModal}
                             fetchTodos={fetchTodos}
                         />
-                    ) : <button onClick={()=>setShowModal(true)}>
+                    ) : <button onClick={()=>setShowModal("add")}>
                             Add Task
                         </button>
                 }

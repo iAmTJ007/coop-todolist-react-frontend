@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 import TaskMenu from "./TaskMenu";
 
-function Todo({todo,fetchTodos}){ //child of home
+function Todo({todo,fetchTodos,setShowModal}){ //child of home
     const [menuOpen,setMenuOpen]=useState(false);
 
     const handleMenuOpen=()=>{
@@ -15,7 +15,7 @@ function Todo({todo,fetchTodos}){ //child of home
             <p>{todo.priority} PRIORITY</p>
             <h4>Due Date: {todo.dueDate}</h4>
             <Button text={"More Options"} onClick={handleMenuOpen}/>
-            {menuOpen && <TaskMenu todoId={todo.taskId} fetchTodos={fetchTodos}/>}
+            {menuOpen && <TaskMenu todoId={todo.taskId} fetchTodos={fetchTodos} setShowModal={setShowModal}/>}
         </li>
     )
 }
