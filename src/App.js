@@ -5,6 +5,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import Register from './pages/register';
 import Home from './pages/home';
 import Friends from './pages/friends';
+import PendingPage from './pages/PendingPage';
 function App() {
   return (
     <Routes>
@@ -14,6 +15,7 @@ function App() {
       {/*Protected Routes*/}
       <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>}/>
       <Route path="/todo" element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+      <Route path="/pendingTodos" element={<ProtectedRoute><PendingPage/></ProtectedRoute>}/>
       <Route path="/friends" element={<ProtectedRoute><Friends/></ProtectedRoute>}/>
     </Routes>
   );

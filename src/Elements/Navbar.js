@@ -3,7 +3,10 @@ function Navbar(){
         <div className="navbar">
             <ul>
                 <li>
-                    <a href="/todo">My Tasks</a>
+                    <a href="/todo">Today's Tasks</a>
+                </li>
+                <li>
+                    <a href="/pendingTodos">All Upcoming Tasks</a>
                 </li>
                 <li>
                     <a href="/friends">Friends</a>
