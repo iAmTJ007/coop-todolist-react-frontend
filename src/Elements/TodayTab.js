@@ -8,7 +8,7 @@ function TodayTab(){
     const [todos,setTodos]=useState([]);
     const [loading,setLoading]=useState(false);
     const [date,setDate]=useState(new Date());
-    const [showModal,setShowModal]=useState("none");
+    const [showModal,setShowModal]=useState(null);
     
     const fetchTodos=async()=>{
         try {
@@ -41,7 +41,7 @@ function TodayTab(){
                         <ul>
                             {todos.map((todo)=>
                                 todo.createDate === selectedDate
-                                    ?showModal!=="edit"?(<Todo todo={todo} fetchTodos={fetchTodos} setShowModal={setShowModal}/>)
+                                    ?showModal!==todo.taskId?(<Todo todo={todo} fetchTodos={fetchTodos} setShowModal={setShowModal}/>)
                                         :<AddTaskModal setShowModal={setShowModal} fetchTodos={fetchTodos} task={todo}/>
                                     : ""
                             )}
@@ -49,12 +49,12 @@ function TodayTab(){
                     )
                 }
                 {
-                    showModal==="add" ? (
+                    showModal===-1 ? (
                         <AddTaskModal
                             setShowModal={setShowModal}
                             fetchTodos={fetchTodos}
                         />
-                    ) : <button onClick={()=>setShowModal("add")}>
+                    ) : <button onClick={()=>setShowModal(-1)}>
                             Add Task
                         </button>
                 }

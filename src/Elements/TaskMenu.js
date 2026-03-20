@@ -2,7 +2,7 @@ import Button from "./Button";
 import API from "../api/axios";
 function TaskMenu({todoId,fetchTodos,setShowModal}){  //child of todo
     const handleEdit=async(e)=>{ //opens the addtaskmodal menu which was for edit case
-        setShowModal("edit");
+        setShowModal(todoId);
     }
     const handleDelete=async(e)=>{
         e.preventDefault();
